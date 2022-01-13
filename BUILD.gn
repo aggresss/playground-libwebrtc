@@ -33,6 +33,9 @@ if (!build_with_chromium) {
     if (rtc_build_examples) {
       deps += [ "examples" ]
     }
+    if (rtc_build_playground) {
+      deps += [ "playground" ]
+    }
     if (rtc_build_tools) {
       deps += [ "rtc_tools" ]
     }

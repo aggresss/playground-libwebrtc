@@ -125,6 +125,9 @@ declare_args() {
   # Set this to false to skip building examples.
   rtc_build_examples = true
 
+  # Set this to false to skip building playground.
+  rtc_build_playground = true
+
   # Set this to false to skip building tools.
   rtc_build_tools = true
 

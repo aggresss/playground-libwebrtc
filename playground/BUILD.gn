@@ -1,0 +1,97 @@
+# Copyright (c) 2016 The WebRTC project authors. All Rights Reserved.
+#
+# Use of this source code is governed by a BSD-style license
+# that can be found in the LICENSE file in the root of the source
+# tree. An additional intellectual property rights grant can be found
+# in the file PATENTS.  All contributing project authors may
+# be found in the AUTHORS file in the root of the source tree.
+
+import("../webrtc.gni")
+
+if (is_android) {
+  import("//build/config/android/config.gni")
+  import("//build/config/android/rules.gni")
+} else if (is_mac) {
+  import("//build/config/mac/rules.gni")
+} else if (is_ios) {
+  import("//build/config/ios/rules.gni")
+}
+
+group("playground") {
+  # This target shall build all targets in playground.
+  testonly = true
+  deps = []
+
+  if (is_linux || is_mac || is_win) {
+    deps += [
+      ":playground_logging",
+#      ":playground_sigslot",
+      ":playground_scoped_refptr",
+#      ":playground_platform_thread",
+#      ":playground_taskqueue",
+#      ":playground_thread",
+      ":playground_proxy",
+    ]
+  }
+}
+
+rtc_executable("playground_logging") {
+  testonly = true
+  sources = [ "playground_logging/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+  ]
+}
+
+rtc_executable("playground_sigslot") {
+  testonly = true
+  sources = [ "playground_sigslot/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+    "../system_wrappers:system_wrappers",
+  ]
+}
+
+rtc_executable("playground_scoped_refptr") {
+  testonly = true
+  sources = [ "playground_scoped_refptr/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+  ]
+}
+
+rtc_executable("playground_platform_thread") {
+  testonly = true
+  sources = [ "playground_platform_thread/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+    "../system_wrappers:system_wrappers",
+  ]
+}
+
+rtc_executable("playground_taskqueue") {
+  testonly = true
+  sources = [ "playground_taskqueue/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+    "../system_wrappers:system_wrappers",
+    "../api/task_queue:default_task_queue_factory",
+  ]
+}
+
+rtc_executable("playground_thread") {
+  testonly = true
+  sources = [ "playground_thread/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+    "../system_wrappers:system_wrappers",
+  ]
+}
+
+rtc_executable("playground_proxy") {
+  testonly = true
+  sources = [ "playground_proxy/main.cc" ]
+  deps = [
+    "../rtc_base/:rtc_base",
+  ]
+}
