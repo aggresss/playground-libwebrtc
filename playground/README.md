@@ -14,7 +14,7 @@ brew install ninja
 # depot_tools
 cd ${HOME}/workspace-formal
 git_clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-env_append PATH ${HOME}/workspace-formal/chromium.googlesource.com/tools/depot_tools
+env_append PATH ${HOME}/workspace-formal/chromium/tools/depot_tools
 env_amend DEPOT_TOOLS_UPDATE 0
 
 # gn
